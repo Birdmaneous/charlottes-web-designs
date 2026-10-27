@@ -16,6 +16,35 @@
   }
   try{reveal()}catch(x){d.documentElement.classList.remove('rv')}
   window.__reveal=reveal;
+  // sticky mobile bar: hidden while the hero CTA (or the page's own contact block) is on screen, so the same CTA never shows twice
+  var sb=d.querySelector('.sticky-cta');
+  if(sb){
+    var hc=d.querySelector('[data-hero-cta]'),ec=d.querySelector('[data-end-cta]'),hcAbove=false,ecIn=false,tk=false;
+    var hasIO='IntersectionObserver' in window;
+    function setBar(){
+      var on=(hc?hcAbove:(window.pageYOffset||d.documentElement.scrollTop)>400)&&!ecIn;
+      sb.classList.toggle('show',on);
+      if(on)sb.removeAttribute('inert');else sb.setAttribute('inert','');
+    }
+    function measure(){
+      if(hc){var r=hc.getBoundingClientRect();hcAbove=r.bottom<=0}
+      if(ec){var q=ec.getBoundingClientRect();ecIn=q.top<innerHeight&&q.bottom>0}
+      setBar();
+    }
+    function onScroll(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;measure()})}
+    try{
+      if(hasIO){
+        var so=new IntersectionObserver(function(es){es.forEach(function(x){
+          if(x.target===hc)hcAbove=!x.isIntersecting&&x.boundingClientRect.bottom<=0;
+          else ecIn=x.isIntersecting;
+        });setBar()});
+        if(hc)so.observe(hc);
+        if(ec)so.observe(ec);
+        if(!hc)addEventListener('scroll',onScroll,{passive:true});
+      }else{addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll)}
+    }catch(x){addEventListener('scroll',onScroll,{passive:true})}
+    measure();
+  }
   // pointer glow on cards
   d.addEventListener('pointermove',function(e){var c=e.target.closest&&e.target.closest('.card');if(!c)return;var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
   // copy email

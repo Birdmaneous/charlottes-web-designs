@@ -344,6 +344,12 @@ nav a.cta:hover{background:#fff}
   .sticky-cta .btn{flex:1;min-height:54px;font-size:1.05rem;--ring:rgba(34,228,255,.6)}
   .sticky-cta .btn svg{width:22px;height:22px}
   .site-footer{padding-bottom:6rem}
+  /* hidden until the hero CTA has scrolled out of view (main.js toggles .show); without JS the bar stays visible */
+  .js .sticky-cta{transform:translateY(110%);opacity:0;visibility:hidden;transition:transform .3s ease,opacity .3s ease,visibility 0s linear .3s}
+  .js .sticky-cta.show{transform:none;opacity:1;visibility:visible;transition:transform .3s ease,opacity .3s ease,visibility 0s}
+}
+@media(max-width:640px) and (prefers-reduced-motion:reduce){
+  .js .sticky-cta,.js .sticky-cta.show{transition:none;transform:none}
 }
 .sticky-cta .pulse{animation-name:ringc}
 @keyframes ringc{0%{box-shadow:0 0 0 0 rgba(34,228,255,.6)}70%{box-shadow:0 0 0 12px rgba(34,228,255,0)}100%{box-shadow:0 0 0 0 rgba(34,228,255,0)}}

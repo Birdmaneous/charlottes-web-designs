@@ -366,6 +366,12 @@ nav a.cta:hover{background:#fff}
   .sticky-cta .btn{flex:1;min-height:54px;font-size:1.05rem;--ring:rgba(34,228,255,.6)}
   .sticky-cta .btn svg{width:22px;height:22px}
   .site-footer{padding-bottom:6rem}
+  /* hidden until the hero CTA has scrolled out of view (main.js toggles .show); without JS the bar stays visible */
+  .js .sticky-cta{transform:translateY(110%);opacity:0;visibility:hidden;transition:transform .3s ease,opacity .3s ease,visibility 0s linear .3s}
+  .js .sticky-cta.show{transform:none;opacity:1;visibility:visible;transition:transform .3s ease,opacity .3s ease,visibility 0s}
+}
+@media(max-width:640px) and (prefers-reduced-motion:reduce){
+  .js .sticky-cta,.js .sticky-cta.show{transition:none;transform:none}
 }
 .sticky-cta .pulse{animation-name:ringc}
 @keyframes ringc{0%{box-shadow:0 0 0 0 rgba(34,228,255,.6)}70%{box-shadow:0 0 0 12px rgba(34,228,255,0)}100%{box-shadow:0 0 0 0 rgba(34,228,255,0)}}
@@ -392,7 +398,7 @@ nav a.cta:hover{background:#fff}
 <p class="lead">The best way to reach me is by email. Just say hello and tell me about your business.</p></div></section>
 
 <section style="padding-top:1rem"><div class="wrap" style="max-width:52rem">
-<div class="cta-band left reveal" style="text-align:left;padding:clamp(1.8rem,6vw,3.2rem)">
+<div class="cta-band left reveal" data-end-cta style="text-align:left;padding:clamp(1.8rem,6vw,3.2rem)">
 <span class="eyebrow">Email</span>
 <p style="margin:0;color:var(--muted)">Brian</p>
 <a class="email-big" id="email" href="mailto:charlotteswebdesignsnola@outlook.com?subject=Website%20sample%20request&amp;body=Hi Brian,%0D%0A%0D%0ABusiness name:%0D%0AWhat you do and where:%0D%0AYour current website or Google profile (if any):%0D%0AAnything you want on the page:%0D%0A">charlotteswebdesignsnola@outlook.com</a>
@@ -427,6 +433,35 @@ nav a.cta:hover{background:#fff}
   }
   try{reveal()}catch(x){d.documentElement.classList.remove('rv')}
   window.__reveal=reveal;
+  // sticky mobile bar: hidden while the hero CTA (or the page's own contact block) is on screen, so the same CTA never shows twice
+  var sb=d.querySelector('.sticky-cta');
+  if(sb){
+    var hc=d.querySelector('[data-hero-cta]'),ec=d.querySelector('[data-end-cta]'),hcAbove=false,ecIn=false,tk=false;
+    var hasIO='IntersectionObserver' in window;
+    function setBar(){
+      var on=(hc?hcAbove:(window.pageYOffset||d.documentElement.scrollTop)>400)&&!ecIn;
+      sb.classList.toggle('show',on);
+      if(on)sb.removeAttribute('inert');else sb.setAttribute('inert','');
+    }
+    function measure(){
+      if(hc){var r=hc.getBoundingClientRect();hcAbove=r.bottom<=0}
+      if(ec){var q=ec.getBoundingClientRect();ecIn=q.top<innerHeight&&q.bottom>0}
+      setBar();
+    }
+    function onScroll(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;measure()})}
+    try{
+      if(hasIO){
+        var so=new IntersectionObserver(function(es){es.forEach(function(x){
+          if(x.target===hc)hcAbove=!x.isIntersecting&&x.boundingClientRect.bottom<=0;
+          else ecIn=x.isIntersecting;
+        });setBar()});
+        if(hc)so.observe(hc);
+        if(ec)so.observe(ec);
+        if(!hc)addEventListener('scroll',onScroll,{passive:true});
+      }else{addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll)}
+    }catch(x){addEventListener('scroll',onScroll,{passive:true})}
+    measure();
+  }
   // pointer glow on cards
   d.addEventListener('pointermove',function(e){var c=e.target.closest&&e.target.closest('.card');if(!c)return;var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
   // copy email
