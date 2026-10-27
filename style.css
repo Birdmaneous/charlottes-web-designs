@@ -142,7 +142,6 @@ nav a.cta:hover{background:#fff}
 .rows b{font-size:1.1rem}
 .rows .d{grid-column:1;color:var(--muted);font-size:.98rem}
 .rows .p{grid-column:2;grid-row:1;font:700 1.25rem var(--font);color:var(--cyan);white-space:nowrap;text-align:right}
-.tag{font:400 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase;background:#f59e0b;color:#1a1200;padding:.2rem .5rem;border-radius:6px;margin-left:.5rem;vertical-align:middle}
 .faq details{border:1px solid var(--line);border-radius:14px;background:var(--glass);padding:0 1.3rem;margin-bottom:.8rem}
 .faq summary{cursor:pointer;padding:1.1rem 0;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
 .faq summary::-webkit-details-marker{display:none}
