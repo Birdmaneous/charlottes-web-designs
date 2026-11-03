@@ -377,6 +377,40 @@ nav a.cta:hover{background:#fff}
 @keyframes ringc{0%{box-shadow:0 0 0 0 rgba(34,228,255,.6)}70%{box-shadow:0 0 0 12px rgba(34,228,255,0)}100%{box-shadow:0 0 0 0 rgba(34,228,255,0)}}
 @media(max-width:640px){.phones{gap:2.4rem}}
 .cmp-bad{padding-bottom:22px}
+
+/* ===== our work (real projects) ===== */
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ow-grid{display:grid;gap:1.4rem;grid-template-columns:1fr;align-items:start}
+@media(min-width:980px){.ow-grid{grid-template-columns:1.55fr 1fr;gap:1.6rem}}
+.ow-card{padding:0;display:flex;flex-direction:column}
+.ow-feature{border-color:rgba(34,228,255,.38);box-shadow:0 0 70px rgba(34,228,255,.10),0 0 120px rgba(139,92,246,.12)}
+.ow-media{position:relative;padding:clamp(1rem,3vw,1.6rem) clamp(1rem,3vw,1.6rem) 0;padding-right:clamp(3.6rem,13vw,6.5rem);
+  background:radial-gradient(500px 260px at 30% 0%,rgba(34,228,255,.14),transparent 70%),radial-gradient(400px 260px at 100% 100%,rgba(167,139,250,.16),transparent 70%);border-bottom:1px solid var(--line)}
+.ow-side .ow-media{padding-right:clamp(3.2rem,12vw,4.6rem)}
+.ow-media figure{margin:0}
+.ow-browser{border:1px solid rgba(140,170,255,.28);border-bottom:0;border-radius:12px 12px 0 0;overflow:hidden;background:#0a1024;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.ow-chrome{display:flex;align-items:center;gap:.4rem;padding:.55rem .75rem;background:rgba(16,24,52,.95);border-bottom:1px solid var(--line)}
+.ow-chrome i{width:8px;height:8px;border-radius:50%;background:rgba(140,170,255,.35);flex:none}
+.ow-chrome i:first-child{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.ow-chrome span{margin-left:.5rem;flex:1;min-width:0;font:400 .72rem/1.6 var(--mono);color:var(--muted);background:rgba(5,7,15,.6);border:1px solid var(--line);border-radius:999px;padding:0 .7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ow-browser img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.ow-phone{position:absolute;right:clamp(.8rem,2.6vw,1.4rem);bottom:-1px;width:clamp(5.4rem,20vw,9.5rem);border:3px solid #1b2547;border-bottom:0;border-radius:18px 18px 0 0;overflow:hidden;background:#000;
+  box-shadow:0 0 0 1px rgba(34,228,255,.35),0 18px 40px rgba(0,0,0,.55),0 0 30px rgba(34,228,255,.18)}
+.ow-side .ow-phone{width:clamp(4.8rem,17vw,6.6rem)}
+.ow-phone img{width:100%;height:auto;aspect-ratio:360/600;object-fit:cover;object-position:top}
+.ow-body{padding:clamp(1.3rem,3.5vw,1.9rem)}
+.ow-body h3{font-size:clamp(1.35rem,3.4vw,1.75rem);margin-bottom:.5em}
+.ow-side .ow-body h3{font-size:1.35rem}
+.ow-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.ow-badge{font:700 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#021018;background:var(--cyan);padding:.4rem .65rem;border-radius:999px;box-shadow:0 0 18px rgba(34,228,255,.4)}
+.ow-kind{font:400 .78rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.ow-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 0;padding:0;list-style:none}
+.ow-tags li{font:400 .76rem/1 var(--mono);padding:.5rem .75rem;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(10,16,36,.6)}
+.ow-body .btn-row{margin-top:1.5rem}
+.ow-body .btn svg{width:18px;height:18px}
+.ow-card:hover .ow-browser{border-color:rgba(34,228,255,.5)}
+@media(min-width:821px) and (max-width:980px){nav a{padding:.55rem .6rem;font-size:.95rem}nav ul{gap:.1rem}}
+@media(min-width:821px) and (max-width:900px){nav a{padding:.5rem .45rem;font-size:.9rem}.brand{font-size:.98rem}.brand svg{width:30px;height:30px}}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -387,6 +421,7 @@ nav a.cta:hover{background:#fff}
 <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
 <nav id="nav" aria-label="Main"><ul>
 <li><a href="index.html#what">What I do</a></li>
+<li><a href="index.html#our-work">Our work</a></li>
 <li><a href="index.html#work">Sample work</a></li>
 <li><a href="index.html#how">How it works</a></li>
 <li><a href="pricing.html">Pricing</a></li>
@@ -414,6 +449,38 @@ nav a.cta:hover{background:#fff}
 <article class="card reveal" style="--d:0.32s"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4Z"/></svg></div><h3>Plain-English process</h3><p>You tell me about your business by email. No jargon and no tech homework.</p></article>
 <article class="card reveal" style="--d:0.4s"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg></div><h3>Room to grow</h3><p>Start with one page. Add pages or extras later if you need them.</p></article>
 </div></div></section>
+
+<section id="our-work" aria-labelledby="ow-h"><div class="wrap">
+<div class="sec-head reveal"><span class="eyebrow">Our work</span><h2 id="ow-h">Real sites, <span class="grad">live right now.</span></h2><p>A couple of projects I designed and built. Both are live, so you can open them and look around for yourself.</p></div>
+<div class="ow-grid">
+<article class="card ow-card ow-feature reveal">
+<div class="ow-media">
+<figure class="ow-browser"><div class="ow-chrome" aria-hidden="true"><i></i><i></i><i></i><span>5816riveroaks.com</span></div><img src="work/riveroaks-desktop-1280.webp" srcset="work/riveroaks-desktop-720.webp 720w, work/riveroaks-desktop-1280.webp 1280w" sizes="(min-width:980px) 680px, (min-width:600px) 88vw, 92vw" width="1280" height="800" loading="lazy" decoding="async" alt="Desktop screenshot of the 5816 River Oaks Rd S listing site: office/warehouse for lease in Elmwood Industrial Park, with a photo of the building and key specs."></figure>
+<figure class="ow-phone"><img src="work/riveroaks-phone-360.webp" width="360" height="779" loading="lazy" decoding="async" alt="The same listing site on a phone."></figure>
+</div>
+<div class="ow-body">
+<div class="ow-meta"><span class="ow-badge">Featured</span><span class="ow-kind">Property listing website</span></div>
+<h3>5816 River Oaks Rd S</h3>
+<p>A single-property website for an office/warehouse for lease in Elmwood Industrial Park. Photos, full specs, a floor plan section and a location map all live on one page that works on phones and desktops.</p>
+<ul class="ow-tags" aria-label="Site features"><li>Real estate listing</li><li>Photo gallery</li><li>Floor plan</li><li>Location map</li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="https://5816riveroaks.com" target="_blank" rel="noopener">Visit site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span class="sr">(opens in a new tab)</span></a></div>
+</div>
+</article>
+<article class="card ow-card ow-side reveal" style="--d:.12s">
+<div class="ow-media">
+<figure class="ow-browser"><div class="ow-chrome" aria-hidden="true"><i></i><i></i><i></i><span>playtigerpoker.com</span></div><img src="work/tiger-desktop-720.webp" srcset="work/tiger-desktop-720.webp 720w, work/tiger-desktop-1280.webp 1280w" sizes="(min-width:980px) 420px, (min-width:600px) 88vw, 92vw" width="720" height="450" loading="lazy" decoding="async" alt="Desktop screenshot of Tiger Poker: the sign-up screen for a free play-money Texas Hold'em game."></figure>
+<figure class="ow-phone"><img src="work/tiger-phone-360.webp" width="360" height="779" loading="lazy" decoding="async" alt="Tiger Poker on a phone."></figure>
+</div>
+<div class="ow-body">
+<div class="ow-meta"><span class="ow-kind">Custom web app</span></div>
+<h3>Tiger Poker</h3>
+<p>A multiplayer Texas Hold&#39;em web app where people play with friends or practice against bots, using free play chips only. Players can check every hand&#39;s shuffle for fairness right in their browser.</p>
+<ul class="ow-tags" aria-label="App features"><li>Web app</li><li>Multiplayer</li><li>Player accounts</li></ul>
+<div class="btn-row"><a class="btn btn-ghost" href="https://playtigerpoker.com" target="_blank" rel="noopener">Visit site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span class="sr">(opens in a new tab)</span></a></div>
+</div>
+</article>
+</div>
+</div></section>
 
 <section id="work" aria-labelledby="work-h"><div class="wrap">
 <div class="sec-head reveal"><span class="eyebrow">Sample work</span><p class="badge-ex">Example designs, not real clients</p><h2 id="work-h">What a phone-first page <span class="grad">looks like.</span></h2><p>What a $400 one-page starter site can look like for the kinds of businesses I design for. These are example designs, not real clients.</p></div>
